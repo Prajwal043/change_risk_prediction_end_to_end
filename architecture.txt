@@ -1,0 +1,19 @@
+Deployment Request
+        |
+        v
+Feature Processing
+        |
+        v
+Risk Prediction Model
+(Random Forest/XGBoost)
+        |
+        +----------------+
+        |                |
+        v                v
+Failure Probability   SHAP Explainability
+        |
+        v
+Risk Level
+        |
+        v
+JSON Response
