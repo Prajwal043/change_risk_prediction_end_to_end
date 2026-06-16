@@ -60,3 +60,19 @@ jobs:
       - name: Build Frontend Docker Image
         run: |
           docker build -t change-risk-frontend ./frontend/frontend
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Push API Image
+        run: |
+          docker tag change-risk-api dckid043/change-risk-api:latest
+          docker push dckid043/change-risk-api:latest
+
+      - name: Push Frontend Image
+        run: |
+          docker tag change-risk-frontend dckid043/change-risk-frontend:latest
+          docker push dckid043/change-risk-frontend:latest
