@@ -9,7 +9,6 @@ jobs:
 test:
 runs-on: ubuntu-latest
 
-```
 steps:
   - name: Checkout Code
     uses: actions/checkout@v4
@@ -21,50 +20,7 @@ steps:
 
   - name: Install Dependencies
     run: |
-      pip install -r requirements.txt
       pip install pytest
 
   - name: Run Tests
     run: pytest
-```
-
-train-model:
-runs-on: ubuntu-latest
-
-```
-needs: test
-
-steps:
-  - uses: actions/checkout@v4
-
-  - name: Setup Python
-    uses: actions/setup-python@v5
-    with:
-      python-version: "3.11"
-
-  - name: Install Dependencies
-    run: |
-      pip install -r requirements.txt
-
-  - name: Train Model
-    run: |
-      python src/train_models.py
-```
-
-docker-build:
-runs-on: ubuntu-latest
-
-```
-needs: train-model
-
-steps:
-  - uses: actions/checkout@v4
-
-  - name: Build API Docker Image
-    run: |
-      docker build -t change-risk-api ./api
-
-  - name: Build Frontend Docker Image
-    run: |
-      docker build -t change-risk-frontend ./frontend
-```
