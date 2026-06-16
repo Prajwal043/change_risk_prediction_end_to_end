@@ -59,4 +59,4 @@ jobs:
 
       - name: Build Frontend Docker Image
         run: |
-          docker build -t change-risk-frontend ./frontend
+          docker build -t change-risk-frontend ./frontend/frontend
