@@ -1,16 +1,33 @@
+# version: '3.9'
+
+# services:
+
+#   api:
+#     build: api
+#     container_name: change-risk-api
+#     ports:
+#       - "8000:8000"
+
+#   frontend:
+#     build: frontend/frontend
+#     container_name: change-risk-frontend
+#     ports:
+#       - "5173:5173"
+#     depends_on:
+#       - api
+
+
 version: '3.9'
 
 services:
 
   api:
-    build: api
-    container_name: change-risk-api
+    image: dckid043/change-risk-api:latest
     ports:
       - "8000:8000"
 
   frontend:
-    build: frontend/frontend
-    container_name: change-risk-frontend
+    image: dckid043/change-risk-frontend:latest
     ports:
       - "5173:5173"
     depends_on:
